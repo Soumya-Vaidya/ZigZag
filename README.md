@@ -41,7 +41,9 @@ Users can also provide feedback through the feedback page.
 Quantified Self is built using the following technologies:
 
 Front-end: HTML, CSS, JavaScript
+
 Back-end: Python Flask
+
 Database: SQLite
 
 ## Credits
