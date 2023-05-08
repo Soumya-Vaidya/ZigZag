@@ -38,7 +38,7 @@ There are also separate pages for cafes, shops, hostels, and tourist spots that 
 Users can also provide feedback through the feedback page.
 
 ## Technology Stack
-Quantified Self is built using the following technologies:
+ZigZag is built using the following technologies:
 
 Front-end: HTML, CSS, JavaScript
 
