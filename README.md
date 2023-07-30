@@ -28,6 +28,19 @@ python app.py
 
 This will start the Flask development server. You can access the application by navigating to http://localhost:5000/ in your web browser.
 
+### OR INSTALL USING DOCKER
+
+1. 
+```
+docker build -t zigzag https://github.com/Soumya-Vaidya/ZigZag.git
+```
+
+2.
+```
+docker run -p 8000:8000 zigzag 
+```
+
+
 
 ## Description
 
