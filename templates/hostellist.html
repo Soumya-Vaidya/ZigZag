@@ -43,7 +43,8 @@
                 {% for hostel in hostels %}
                 <div class="box">
                     <div class="image">
-                        <img src="{{url_for('static/images', filename = hostel['himg'])}}" alt="">
+                        <img src="{{ url_for('static', filename='images/' + hostel['himg']) }}" alt="">
+
                     </div>
                     <div class="content">
                         <h3>{{ hostel['hname']}}</h3>

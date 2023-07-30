@@ -1,30 +1,15 @@
-from distutils.log import debug
-# from email import message
-import os
-# import re
-# import sqlalchemy
 from flask import Flask
-from flask import render_template
+from flask import render_template, redirect, url_for
 from flask import request
-from flask import redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-# from sqlalchemy import create_engine
-# from sqlalchemy import Table, Column, Integer, String, ForeignKey
-# from sqlalchemy import select
 
-from sqlalchemy.orm import Session
-#from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy.orm import declarative_base
-# from sqlalchemy.orm import relationship
-
-
-current_dir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///ZigZagbd.sqlite3"
 db = SQLAlchemy()
 db.init_app(app)
 app.app_context().push()
+
 
 class Cafe(db.Model):
     __tablename__ = 'cafes'
@@ -120,7 +105,6 @@ def zigzag():
                
         print(f)
         
-        
 
 @app.route("/cafelist", methods=["GET", "POST"])
 def cafe():
@@ -154,18 +138,12 @@ def feedback():
         phone = request.form['phone']
         subj = request.form['subject']
         mes = request.form['message']
-        with Session(db.engine, autoflush=False) as session:
-            try:
-                f = Feedback(fname = name, femail = email, fphone = phone, fsubject = subj, fmessage = mes )
-                session.add(f)
-                session.flush() 
-            except:
-                print("Rolling Back")
-                session.rollback()
-                raise
-            else:
-                print('commit')
-                session.commit()
+
+        f = Feedback(fname = name, femail = email, fphone = phone, fsubject = subj, fmessage = mes)
+        db.session.add(f)
+        db.session.commit()
+
+
         return redirect(url_for('zigzag'))
 
 

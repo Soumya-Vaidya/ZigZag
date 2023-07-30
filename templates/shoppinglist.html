@@ -43,8 +43,8 @@
                 {% for shop in shopping %}
                 <div class="box">
                     <div class="image">
-                        <!-- <img src="{{ shop['simg'] }}" alt=""> -->
-                        <img src="{{url_for('static/images', filename = shop['simg'])}}" alt="">
+                        <img src="{{ url_for('static', filename='images/' + shop['simg']) }}" alt="">
+
                     </div>
                     <div class="content">
                         <h3>{{ shop['sname']}}</h3>
